@@ -1,0 +1,45 @@
+<div class="card mb-3" style="max-width: 1040px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%#= @user.images %></h5>
+        <h5 class="card-title"><%= @user.user_name %></h5>
+        <p class="card-text"><%= @user.student_at %></p>
+        <p class="card-text"><%= @user.contact %></p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+  <h4>Educations</h4> <br>
+      <%= link_to "Add Education", new_education_path, remote: true %><br>
+    <div id="ed">
+    </div>
+      <ul id="edu">
+        <%= render @user.educations %><br>
+      </ul>
+ 
+
+  <h4>Skills</h4> <br>
+      <%= link_to "Add Skill", new_skill_path, remote: true %><br>
+    <div class="skill">
+    </div>
+    <ul id="ski">
+      <%= render 'skills/skill', skill: @user.skills %><br>
+    </ul>
+
+  <h4>Experience</h4> <br>
+    <%= link_to "Add Experience", new_experience_path, remote: true %><br>
+  <div id="experience">
+  </div>
+  <ul id="exp">
+    <%= render @user.experiences %><br>
+  </ul>
+
+
+
+<%= link_to "Back", users_path %>

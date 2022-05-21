@@ -1,0 +1,18 @@
+<table class="table"> 
+  <% User.all.each do |user| %>
+    <% friend = Friendship.where(user_id: user.id, friend_id: current_user.id).first %>
+      <tr>
+          <td><%= user.user_name %></td>
+          <td><%= user.email%></td>
+          <td>
+            <% if friend.blank? %>
+            <%= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id, requester_id: user.id), method: :post %>
+            <% else %>
+            <%= link_to 'Cancel request', friendship_path(friend), method: :delete %>
+            <% end %>
+          </td>
+      </tr>
+  <% end %>
+
+</table>
+

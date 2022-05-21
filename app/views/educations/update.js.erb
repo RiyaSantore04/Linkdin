@@ -1,0 +1,6 @@
+<% if @education.present? %>
+	$("#<%= @education.id %>").html("<%= j render partial: "education", locals: {education: @education} %>");
+<% else %>
+	$('#ed').html("<%= j (render partial: 'form') %>");
+<% end %>
+

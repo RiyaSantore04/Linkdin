@@ -1,0 +1,7 @@
+<% if @skill.save %>
+	$('#ski').html("");
+	$('#skill').append("<%= j render partial: "skill", locals: {skill: @skill} %>");
+<% else %>
+	$('#ski').html("<%= j (render partial: 'form') %>");
+<% end %>
+

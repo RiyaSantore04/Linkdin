@@ -1,0 +1,4 @@
+<%= form_with model: @post, method: "post" do |f| %>
+    <%= f.file_field :images, multiple: true %><br>
+  <%= f.submit %>
+<% end %>

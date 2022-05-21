@@ -1,0 +1,16 @@
+ <%= form_with(url: "/comments", method: "post")  do |form| %> 
+  <div>
+    <%= form.label :Reply %><br> 
+    <%= form.text_field :commenter %>
+    <%= form.hidden_field :commentable_type, value: Comment %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :commentable_id, value: comment.id %>
+
+     <% comment.comments.each do |reply|%><br>
+      <% if comment.comments.present? %>
+        <%=reply.commenter %>
+      <%end%>
+    <%end%>
+        <div><%= form.submit %></div>
+<% end %>
+ 

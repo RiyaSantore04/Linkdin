@@ -1,0 +1,7 @@
+
+<% if @education.save %>
+	$('#ed').html("");
+	$("#edu").append("<%= j render partial: "education", locals: {education: @education} %>");
+<% else %>
+	$('#ed').html("<%= j (render partial: 'form') %>");
+<% end %>

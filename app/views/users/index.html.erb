@@ -1,0 +1,33 @@
+
+<div class="col-lg-5 offset-lg-3">
+    <div class="card">
+      <div class="card-body">
+        Create A New Post.<br>
+        <div class="post">
+          <%= button_to "Create Post",new_post_path,:class => "btn btn-outline-secondary", :method => :get, remote:  true %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-lg-4 offset-lg-3">
+ <% @posts.each do |post| %><br>
+   <div class="image_container">
+      <div class="card" style="width:27.1rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%=  post.title  %></h5>
+          <p class="card-text"><%= post.description %></p>
+        </div>
+        <% if post.image.attached? %>
+          <%= image_tag post.image%><br>
+        <% end %>
+      
+      <%= render 'likes/form', post: post %>
+      <%= render 'comments/form', post: post %>
+
+      </div>    
+    </div>
+  <% end %>
+  <%= paginate @posts %>
+
+</div>

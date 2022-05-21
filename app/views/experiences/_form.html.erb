@@ -1,0 +1,28 @@
+<%= form_with  model: @experience, local: false do |form| %>
+
+
+<div>
+<%= form.label :Designation %><br>
+<%= form.text_field :designation %>	
+</div>
+
+<div>
+	<%= form.label :Company_name %><br>
+	<%= form.text_field :company_name %>
+</div>
+
+<div>
+	<%= form.label :Location %><br>
+	<%= form.text_field :location %>
+</div>
+
+<%= form.hidden_field :user_id, value: current_user.id%>
+<div>
+	<%= form.label :Probation_period %><br>
+	<%= form.date_field :probation_period	%>
+</div>
+
+<div>
+	<%= form.submit %>
+</div>
+<% end %>

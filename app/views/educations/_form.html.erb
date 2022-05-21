@@ -1,0 +1,23 @@
+<%= form_with  model: @education, local: false do |form| %>
+
+
+<div>
+<%= form.label :Collage %><br>
+<%= form.text_field :collage %>	
+</div>
+
+<div>
+	<%= form.label :Course %><br>
+	<%= form.text_field :course %>
+</div>
+
+<%= form.hidden_field :user_id, value: current_user.id%>
+<div>
+	<%= form.label :Field_of_study %><br>
+	<%= form.text_field :field_of_study %>
+</div>
+
+<div>
+	<%= form.submit %>
+</div>
+<% end %>

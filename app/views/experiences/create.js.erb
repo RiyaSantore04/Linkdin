@@ -1,0 +1,7 @@
+
+<% if @experience.save %>
+	$('#experience').html("");
+	$("#exp").append("<%= j render partial: "experience", locals: {experience: @experience} %>");
+<% else %>
+	$('#experience').html("<%= j (render partial: 'form') %>");
+<% end %>

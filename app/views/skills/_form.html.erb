@@ -1,0 +1,13 @@
+<%= form_with  model: @skill, local: false  do |form| %>
+
+
+<%= form.hidden_field :user_id, value: current_user.id%>
+<div>
+	<%= form.label :Skills %><br>
+	<%= form.text_field :skill %>
+</div>
+
+<div>
+	<%= form.submit %>
+</div>
+<% end %>

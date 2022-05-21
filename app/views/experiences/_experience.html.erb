@@ -1,0 +1,16 @@
+    <li id= "<%= experience.id %>">
+        <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <!-- <h5 class="card-title">Special title treatment</h5> -->
+        <p class="card-text">Designation=> <%= experience.designation %></p>
+        <p class="card-text">Company Name => <%= experience.company_name %></p>
+        <p class="card-text">Location => <%= experience.location %></p>
+        <p class="card-text">Probation Period => <%= experience.probation_period %></p>
+        <%= link_to "Edit Experience", edit_experience_path(experience), remote: true %><br>
+        <%= link_to "Delete", experience_path(experience), data:{
+      method: :delete,confirm: :"Are you sure"}%>
+       </div>
+      </div>
+    </li>

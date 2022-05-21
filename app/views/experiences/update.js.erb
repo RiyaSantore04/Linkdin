@@ -1,0 +1,5 @@
+<% if @experience.present? %>
+	$("#<%= @experience.id %>").html("<%= j render partial: "experience", locals: {experience: @experience} %>");
+<% else %>
+	$('#experience').html("<%= j (render partial: 'form') %>");
+<% end %>

@@ -1,0 +1,25 @@
+ <%= form_with(url: "/comments", method: "post")do |form| %>
+
+  <div>
+    <%= form.label :comment %><br> 
+    <%= form.text_field :commenter %>
+    <%= form.hidden_field :commentable_type, value: Post %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :commentable_id, value: post.id %>
+   </div>
+  <div><%= form.submit %></div>
+<% end %>
+  
+    
+    <% post.comments.each do |comment|%><br>
+      <% if post.comments.present? %>
+        <%=comment.commenter %>
+        <%= render 'comments/reply_form', comment: comment%>
+      <%end%>
+ 
+  <%= link_to 'Like', likes_path( user_id: current_user , likeable_id: comment.id, likeable_type: Comment), method: :post %>
+  <p><%= comment.likes.count %> <%= (comment.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <% end %>
+ 
+
+       

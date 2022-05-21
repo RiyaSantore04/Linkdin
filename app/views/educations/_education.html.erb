@@ -1,0 +1,14 @@
+    <li id= "<%= education.id %>">
+      <%# byebug %>
+      <div class="card">
+        <div class="card-header">
+      </div>
+        <div class="card-body">
+        <p class="card-text">Collages => <%= education.collage %></p>
+        <p class="card-text">Course => <%= education.course %></p>
+        <p class="card-text">Field of study => <%= education.field_of_study %></p>
+        <%= link_to "Edit Education", edit_education_path(education), remote: true %><br>
+        <%= link_to "Delete", education_path(education), data:{method: :delete,confirm: :"Are you sure"} , remote: true %>
+      </div>
+    </div>
+  </li>
