@@ -3,6 +3,9 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
-  belongs_to :requester, class_name: 'User'
-  default_scope { where(isfriend: true) }
+  scope :xyz, -> { where(isfriend: false) }
+
+# def self.abc
+#   where(isfriend: false)
+# end
 end

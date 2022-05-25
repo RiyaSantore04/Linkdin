@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+
   def index
-    @post = User.posts.all
-    @comment = User.comments.all
-    @like = User.likes.all
+     @post = Post.all
   end
 
   def show
@@ -16,10 +15,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    # byebug
     @post = Post.new(post_params)
-    CrudNotificationMailer.create_notification(@post).deliver_now
+    # CrudNotificationMailer.create_notification(@post).deliver_now
     if @post.save
+      GuestsCleanupJob.perform_now(@post)
        @posts = Post.all
       redirect_to root_path
     else
@@ -33,7 +32,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # CrudNotificationMailer.update_notification(@post).deliver_now
     if @post.update(post_params)
       redirect_to @post
     else
@@ -43,15 +41,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    # CrudNotificationMailer.delete_notification(@post).deliver_now
-
     @post.destroy
-
     redirect_to root_path, status: :see_other
   end
 
   private
-
   def post_params
     params.require(:post).permit(:title, :description, :image, :User_id, :likeable_id, :likeable_type)
   end

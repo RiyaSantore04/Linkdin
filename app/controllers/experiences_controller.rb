@@ -15,12 +15,6 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
-
-    # if @experience.save
-    #   redirect_to root_path
-    # else
-    #   render :new
-    # end
   end
 
   def edit
@@ -31,18 +25,11 @@ class ExperiencesController < ApplicationController
     @experience = Experience.find(params[:id])
     @experience.update(experience_params)
     @experiences = Experience.all
-
-    #   redirect_to @experience
-    # else
-    #   render :edit
-    # end
   end
 
   def destroy
     @experience = Experience.find(params[:id])
     @experience.destroy
-
-    # redirect_to root_path, status: :see_other
   end
 
   private

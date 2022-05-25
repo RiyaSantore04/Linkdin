@@ -1,7 +1,7 @@
 class GuestsCleanupJob < ApplicationJob
-  queue_as :urgent
+  queue_as :default
 
-  def perform(*args)
-    # Do something later
+  def perform(post)
+  CrudNotificationMailer.create_notification(post).deliver_now
   end
 end

@@ -16,13 +16,14 @@
 
   
   <h4>Educations</h4> <br>
-    <%= link_to "Add Education", new_education_path, remote: true %><br>
+  <%# byebug %>
+      <%= link_to "Add Education", new_education_path, remote: true %><br>
     <div id="ed">
     </div>
       <ul id="edu">
         <%= render @user.educations %><br>
       </ul>
-
+ 
 
   <h4>Skills</h4> <br>
       <%= link_to "Add Skill", new_skill_path, remote: true %><br>
@@ -39,5 +40,7 @@
   <ul id="exp">
     <%= render @user.experiences %><br>
   </ul>
+
+
 
 <%= link_to "Back", users_path %>

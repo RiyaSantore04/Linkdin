@@ -1,24 +1,6 @@
-<!-- <table class="table">
 
-  <%# @friendships.all.each do |request| %>
-      <tr>
-          <td><%#= request.user.user_name %></td>
-          <td>
-            <%# byebug %>
-            <%#= link_to 'Accept', friendship_path(friend_id: request.friend_id), method: :put %>
-          </td>
-      </tr>
-  <%# end %>
-
-</table> -->
-
-<% current_user.friendships.each do |request| %>
-<li>
-  <%= User.find(request.friend_id).user_name %>
-  <%#= if (request.isfriend == false && request.request_id != current_user.id) %>
-  <%= link_to "Accept", friendship_path(friend_id: request.friend_id),method:"put"   %>
-  <% end %> 
-  <%= link_to "Decline", friendship_path(request), method: :delete %>
-</li>
-<%# end %>
-</ul>
+<% @friendship.each do |request| %>
+  <%= request.user.user_name %>
+  <%= link_to "Accept", friendship_path(friend_id: request.user_id),method:"put" %> 
+  <%= link_to "Decline", friendship_path(request), method: :delete %> 
+<% end %>

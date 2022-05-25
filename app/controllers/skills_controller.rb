@@ -14,14 +14,7 @@ class SkillsController < ApplicationController
   end
 
   def create
-    # byebug
     @skill = Skill.new(skill_params)
-
-    # if @skill.save
-    #   redirect_to root_path
-    # else
-    #   render :new
-    # end
   end
 
   def edit
@@ -41,7 +34,6 @@ class SkillsController < ApplicationController
   def destroy
     @skill = Skill.find(params[:id])
     @skill.destroy
-    # redirect_to root_path, status: :see_other
   end
 
   private

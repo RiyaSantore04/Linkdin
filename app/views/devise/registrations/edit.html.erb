@@ -4,31 +4,88 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :UserName %><br />
+    <%= f.text_field :user_name  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Profession %><br />
+    <%= f.text_field :student_at  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Contact %><br />
+    <%= f.number_field :contact %>
+  </div>
+
+  <h4> Education </h4>
+  <%= f.fields_for :educations, resource.educations.build  do |subform| %>
+ 
+      <div>
+      <%= subform.label :Collage %><br>
+      <%= subform.text_field :collage %> 
+      </div>
+
+      <div>
+      <%= subform.label :Course %><br>
+      <%= subform.text_field :course %>
+      <%#= subform.hidden_field :user_id, value: current_user.id%>
+      <div>
+      <%= subform.label :Field_of_study %><br>
+      <%= subform.text_field :field_of_study %>
+      </div>
+  <%  end %> 
+
+  <h4> Skills </h4>
+  <%= f.fields_for :skills, resource.skills.build  do |skill_subform| %>
+    <div>
+     <%= skill_subform.label :Skills %><br>
+     <%= skill_subform.text_field :skill %>
+    </div>
+
+  <%  end %>
+
+  <h4> Experience </h4>
+  <%= f.fields_for :experiences, resource.experiences.build  do |experience_subform| %>
+    <div>
+      <%= experience_subform.label :Designation %><br>
+      <%= experience_subform.text_field :designation %> 
+    </div>
+
+    <div>
+      <%= experience_subform.label :Company_name %><br>
+      <%= experience_subform.text_field :company_name %>
+    </div>
+
+    <div>
+      <%= experience_subform.label :Location %><br>
+      <%= experience_subform.text_field :location %>
+    </div>
+
+    <div>
+      <%= experience_subform.label :Probation_period %><br>
+      <%= experience_subform.date_field :probation_period %>
+    </div>
+
+
+  <%  end %>  
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">

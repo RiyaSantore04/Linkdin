@@ -14,17 +14,12 @@ class EducationsController < ApplicationController
   end
 
   def create
+    # byebug
     @education = Education.new(education_params)
-    # @educations = Education.all
-    # if @education.save
-    #   redirect_to @user
-    # else
-    #   render :new
-    # end
+    # @education.save
   end
 
   def edit
-    # @education = Education.where(params[:id])
     @education = current_user.educations.find(params[:id])
   end
 
@@ -32,21 +27,16 @@ class EducationsController < ApplicationController
     @education = Education.find(params[:id])
     @education.update(education_params)
     @educations = Education.all
-      # redirect_to @education
-    # else
-    #   render :edit
-    # end
   end
 
   def destroy
     @education = Education.find(params[:id])
     @education.destroy
-    # redirect_to @user
   end
 
   private
 
   def education_params
-    params.require(:education).permit(:user_id, :collage, :course, :field_of_study)
+    params.require(:education).permit(:user_id, :collage, :course, :field_of_study )
   end
 end

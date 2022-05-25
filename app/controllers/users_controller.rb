@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
   def index
-    @users = User.all
-    # @posts = Post.all.page(params[:page])
+    @users = User.except(current_user)
     @posts = Post.order('created_at desc').page(params[:page])
-    @likes = Like.all
-    # @educations = Education.all
   end
 
   def show
@@ -15,6 +13,7 @@ class UsersController < ApplicationController
 
   # def new
   #   @user = User.new
+  #   @user.education.build
   # end
 
   # def create

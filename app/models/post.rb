@@ -8,5 +8,5 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable
   validates :image, presence: true
   validates :title, presence: true
-  validates :description, presence: true, length: { minimum: 10 }
+  validates :description, presence: true, length: { minimum: 5 }
 end
