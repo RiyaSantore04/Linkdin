@@ -10,13 +10,13 @@
           <td>
 
               <%# byebug %>
-            <%# if @friend.blank? %>
-              <%#= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id), method: :post %>
-            <%# if  (request.request_id != current_user.id) %>
-            <%# else %>
-            <%#= link_to 'Cancel request', '/friendships/:id', method: :delete %>
-            <%# end %>
-            <%# end %>
+            <% if @friend.blank? %>
+              <%= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id), method: :post %>
+            <% if  (request.request_id != current_user.id) %>
+            <% else %>
+            <%= link_to 'Cancel request', '/friendships/:id', method: :delete %>
+            <% end %>
+            <% end %>
 
           
              <%# if @friend.blank? %>
@@ -26,7 +26,7 @@
               <%= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id), method: :post %>
               <%# else %>
 
-                <%#= link_to 'Cancel request', '/friendships/:id', method: :delete %>
+                <%= link_to 'Cancel request', '/friendships/:id', method: :delete %>
                <%# end %>
           </td>
       </tr>
