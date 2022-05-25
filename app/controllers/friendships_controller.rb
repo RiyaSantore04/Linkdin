@@ -23,8 +23,8 @@ class FriendshipsController < ApplicationController
 
   def destroy
     # byebug
-    # @friendship = Friendship.first
-    @friendship = Friendship.where(friend_id: current_user.id).first
+    @friendship = Friendship.first
+    # @friendship = Friendship.where(friend_id: current_user.id).first
     @friendship.destroy
     redirect_to root_path
   end
