@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 2022_05_25_084817) do
     t.string "commenter"
     t.string "commentable_type"
     t.integer "commentable_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -70,15 +70,6 @@ ActiveRecord::Schema.define(version: 2022_05_25_084817) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_experiences_on_user_id"
-  end
-
-  create_table "friendshipps", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "friend_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["friend_id"], name: "index_friendshipps_on_friend_id"
-    t.index ["user_id"], name: "index_friendshipps_on_user_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -136,8 +127,6 @@ ActiveRecord::Schema.define(version: 2022_05_25_084817) do
   add_foreign_key "comments", "users"
   add_foreign_key "educations", "users"
   add_foreign_key "experiences", "users"
-  add_foreign_key "friendshipps", "friends"
-  add_foreign_key "friendshipps", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "Users"
   add_foreign_key "skills", "users"

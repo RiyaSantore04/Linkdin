@@ -1,6 +1,24 @@
 
-<% @friendship.each do |request| %>
-  <%= request.user.user_name %>
-  <%= link_to "Accept", friendship_path(friend_id: request.user_id),method:"put" %> 
-  <%= link_to "Decline", friendship_path(request), method: :delete %> 
-<% end %>
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+  <h1>Requests</h1>
+    <div style="margin-left: 55rem;"></div><br>
+    <table class="table table-bordered border-dark">
+      <tbody>
+        <% @friendship.each do |request| %>
+        <tr>
+          <td> <%= request.user.user_name %></td>          
+          <td>  <%= link_to "Accept", friendship_path(friend_id: request.user_id),method:"put" %></td>
+          <td><%= link_to "Decline", friendship_path(request), method: :delete %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    </div>
+</div>
+
+
+
+
+
+
