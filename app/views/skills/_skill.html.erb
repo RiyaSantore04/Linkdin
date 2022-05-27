@@ -2,6 +2,7 @@
 <% skill.each do |skill| %>
 <div class="card">
   <div class="card-header">
+    <%= link_to "Add Skill", new_skill_path, remote: true %><br>
   </div>
   <div class="card-body">
     <p class="card-text">Skills => <%= skill.skill %></p>

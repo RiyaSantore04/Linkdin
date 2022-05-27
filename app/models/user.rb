@@ -8,10 +8,12 @@ class User < ApplicationRecord
   # before_validation :ensure_login_has_a_value
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # has_one_attached :image, dependent: :destroy
   has_many :post
   has_many :comments, as: :commentable
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   has_many :educations
   has_many :skills
   has_many :experiences

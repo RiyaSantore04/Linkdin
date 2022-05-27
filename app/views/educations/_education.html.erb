@@ -1,13 +1,20 @@
-    <li id= "<%= education.id %>">
-            <div class="card">
-        <div class="card-header">
+
+   <div id= "<%= education.id %>">
+        <div class="card">
+      <div class="card-header">
+              <%= link_to "Add Education", new_education_path, remote: true %><br>
       </div>
-        <div class="card-body">
-        <p class="card-text">Collages => <%= education.collage %></p>
-        <p class="card-text">Course => <%= education.course %></p>
-        <p class="card-text">Field of study => <%= education.field_of_study %></p>
-        <%= link_to "Edit Education", edit_education_path(education), remote: true %><br>
+      <div class="card-body">
+        <p class="card-text">Collages => &nbsp;&nbsp;&nbsp;&nbsp; <%= education.collage %></p>
+        <p class="card-text">Stream =>&nbsp;&nbsp;&nbsp;&nbsp; <%= education.field_of_study %></p>
+        <p class="card-text">Course =>&nbsp;&nbsp;&nbsp;&nbsp; <%= education.course %></p>
+        <br>
+        <div class="card-footer">
+          <%= link_to "Edit Education", edit_education_path(education), remote: true %><br>
         <%= link_to "Delete", education_path(education), data:{method: :delete,confirm: :"Are you sure"} , remote: true %>
+        </div>
+       </div>
       </div>
     </div>
-  </li>
+
+

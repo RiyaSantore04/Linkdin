@@ -37,6 +37,6 @@ class EducationsController < ApplicationController
   private
 
   def education_params
-    params.require(:education).permit(:user_id, :collage, :course, :field_of_study )
+    params.require(:education).permit(:user_id, :collage, :course, :field_of_study)
   end
 end
