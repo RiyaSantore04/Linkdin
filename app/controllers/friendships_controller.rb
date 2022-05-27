@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
     render :index
   end
 
-  def show  
+  def show
     @friendship = Friendship.where(friend_id: current_user.id, isfriend: false)
   end
 

@@ -1,12 +1,15 @@
  
- <!-- 
+ 
 <h4>Friends</h4>
-<ul> 
-  <%# @friendship.friend.each do |f| %>
-      <%#= f.user_name %>
-  <%# end %>
-
-</ul> -->
+<ul>
+    <% a = Friendship.where(friend_id: current_user.id, isfriend: true) %>
+    <%# b = Friendship.where(user_id: @friendship.id, isfriend: true) %>
+      <% a.each do |form| %>
+        <li>
+          <%= form.user.user_name %>
+        </li>
+      <% end %>
+</ul>
 
 
 
@@ -23,7 +26,7 @@
         <% a = Friendship.where(user_id: current_user.id, friend_id: user.id) %>
 
           <% if  a.blank? %>
-          <td><%= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id), method: :post %></td>
+          <td><%= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id, isfriend: true), method: :post %></td>
            <% else %>
           <td><%= link_to 'Cancel request', friendship_path(a), method: :delete %></td>
           <% end %>
@@ -35,8 +38,7 @@
 </div>
 
 
-
-
+ 
 
 
 

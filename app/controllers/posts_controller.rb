@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-
   def index
-     @post = Post.all
+    @post = Post.all
   end
 
   def show
@@ -19,7 +18,7 @@ class PostsController < ApplicationController
     # CrudNotificationMailer.create_notification(@post).deliver_now
     if @post.save
       GuestsCleanupJob.perform_now(@post)
-       @posts = Post.all
+      @posts = Post.all
       redirect_to root_path
     else
       render :new
@@ -46,6 +45,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :description, :image, :User_id, :likeable_id, :likeable_type)
   end

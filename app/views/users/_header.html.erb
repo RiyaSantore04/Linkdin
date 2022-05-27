@@ -3,6 +3,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
+
+        <img style= "height: 3rem; wedith: 3rem; " <%=image_tag("l.png")%> &nbsp;&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
         </li>
@@ -23,6 +25,7 @@
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         </div>
           <% end %>
+          
     </div>
   </div>
 </nav>

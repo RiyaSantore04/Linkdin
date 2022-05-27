@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-
   def index
     @users = User.except(current_user)
     @posts = Post.order('created_at desc').page(params[:page])
