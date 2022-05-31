@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :educations
   has_many :skills
   has_many :experiences
+  has_many :messages
   validates :user_name, :student_at, :contact, presence: true
   scope :all_except, ->(user) { where.not(id: user) }
   accepts_nested_attributes_for :educations, :skills, :experiences

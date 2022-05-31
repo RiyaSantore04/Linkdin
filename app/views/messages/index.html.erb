@@ -1,0 +1,15 @@
+<h4>Messages</h4>
+
+<ul>
+  <% @friendship.each do |form| %><br>
+      <% if  form.user_id == current_user.id%>
+          <%= form.friend.user_name %>
+          <%#= render 'form', message: @message %>
+       <% else %>
+          <%= form.user.user_name %>
+      <% end %>
+    
+      <%= link_to 'Message',message_path(form) %>
+  <% end %>
+</ul>
+

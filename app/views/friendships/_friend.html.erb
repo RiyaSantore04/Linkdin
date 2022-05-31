@@ -1,13 +1,13 @@
  
- 
 <h4>Friends</h4>
 <ul>
-    <% a = Friendship.where(friend_id: current_user.id, isfriend: true) %>
-    <%# b = Friendship.where(user_id: @friendship.id, isfriend: true) %>
-      <% a.each do |form| %>
-        <li>
-          <%= form.user.user_name %>
-        </li>
+      <% @friendship.each do |form| %><br>
+          <% if  form.user_id == current_user.id%>
+              <%= form.friend.user_name %>
+          <% else %>
+              <%= form.user.user_name %>
+          <% end %> 
+          <%= link_to 'Message',message_path(form) %>
       <% end %>
 </ul>
 
@@ -24,7 +24,6 @@
         <tr>
           <td> <a class="nav-link" href="<%= user_path(user.id) %>" style= "color: black;"><%= user.user_name %></a></td>
         <% a = Friendship.where(user_id: current_user.id, friend_id: user.id) %>
-
           <% if  a.blank? %>
           <td><%= link_to 'Add Friend', friendships_path( user_id: current_user.id, friend_id: user.id, isfriend: true), method: :post %></td>
            <% else %>
