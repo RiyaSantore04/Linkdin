@@ -1,0 +1,13 @@
+<div class="card">
+
+  <div class="card-header">
+   <h3> Messages </h3>
+  </div>
+  <div class="card-body">
+    <% @friend.each do |msg|%><br>
+          <p class="card-text"><%=  msg.user.user_name %> &nbsp;&nbsp; <%= msg.title %></p>
+    <%end%>
+    <%= render 'form', message: @friendship %>
+
+  </div>
+</div>

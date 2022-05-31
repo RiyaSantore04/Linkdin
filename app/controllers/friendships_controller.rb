@@ -2,7 +2,8 @@
 
 class FriendshipsController < ApplicationController
   def index
-    @friendship = current_user
+    @friendship = Friendship.where(user_id: current_user.id, isfriend: true)
+    @friendship += Friendship.where(friend_id: current_user.id, isfriend: true)
   end
 
   def create

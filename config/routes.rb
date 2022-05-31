@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # get 'messages/index'
   # get 'educations/index'
   # get 'posts/index'
   devise_for :users
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   resources :educations
   resources :skills
   resources :experiences
+  resources :messages
 end
